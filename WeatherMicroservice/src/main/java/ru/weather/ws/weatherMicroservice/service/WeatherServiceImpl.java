@@ -28,15 +28,6 @@ public class WeatherServiceImpl implements WeatherService {
         String weatherId = UUID.randomUUID().toString();
 
         WeatherEvent weatherEvent = new WeatherEvent(weatherId, weatherDto);
-
-
-//        SendResult<String, WeatherEvent> result= kafkaTemplate
-//                .send("product-created-events-topic", weatherId, weatherEvent).get();
-////        LOGGER.info("Message sent successfully {}", result.getRecordMetadata());
-//        LOGGER.info("Topic {}", result.getRecordMetadata().topic());
-//        LOGGER.info("Partition {}", result.getRecordMetadata().partition());
-//        LOGGER.info("Offset {}", result.getRecordMetadata().offset());
-        //АСинхронная
         CompletableFuture<SendResult<String, WeatherEvent>> future= kafkaTemplate
                 .send("weather-events-topic", weatherId, weatherEvent);
 
