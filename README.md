@@ -44,7 +44,7 @@
     ```
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-1.properties
     ```
-Выполнить такие же команды для server-2 и server-3:
+ Выполнить такие же команды для server-2 и server-3:
     
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-2.properties
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-3.properties
