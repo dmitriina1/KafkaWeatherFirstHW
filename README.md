@@ -40,7 +40,7 @@
     
     Получить комбинацию букв (например, kpUtegHnRBuOQBScPPbBCA)
     
-5. Далее выполнить команду, вставив на место kpUtegHnRBuOQBScPPbBCA свою комбинацию
+ 4. Далее выполнить команду, вставив на место kpUtegHnRBuOQBScPPbBCA свою комбинацию
     ```
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-1.properties
     ```
@@ -49,17 +49,17 @@
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-2.properties
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-3.properties
 
-5. В разных терминалах из директории запустить команду для каждого сервера (по 1 в каждом терминале):
+ 5. В разных терминалах из директории запустить команду для каждого сервера (по 1 в каждом терминале):
     ```
     .\kafka-server-start.bat ../../config/kraft/server-1.properties
     .\kafka-server-start.bat ../../config/kraft/server-2.properties
     .\kafka-server-start.bat ../../config/kraft/server-3.properties
     ```
 
-6. Запустить WeatherMicroservice, а затем WeatherConsumer. Также можно отправлять запросы через Postman на локальный сервер:
+ 6. Запустить WeatherMicroservice, а затем WeatherConsumer. Также можно отправлять запросы через Postman на локальный сервер:
 Цифры выводятся в консоль при запуске WeatherMicroservice (Tomcat started on port 62792 (http) with context path '/')
      ```
     http://localhost:62792/weather
        ```
-7. Если есть возможность, можете запустить докер файл.
+ 7. Если есть возможность, можете запустить докер файл.
    
