@@ -1,9 +1,7 @@
 package ru.weather.ws.weatherMicroservice.service;
 
-import ru.weather.ws.weatherMicroservice.service.dto.CreateWeatherDto;
-
-import java.util.concurrent.ExecutionException;
+import ru.weather.ws.core.dto.WeatherDto;
 
 public interface WeatherService {
-    String createWeather(CreateWeatherDto createWeatherDto);
+    String createWeather(WeatherDto weatherDto);
 }

@@ -9,7 +9,7 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import ru.weather.ws.core.WeatherCreatedEvent;
+import ru.weather.ws.core.WeatherEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,12 +62,12 @@ public class KafkaConfig {
     }
 
     @Bean
-    ProducerFactory<String, WeatherCreatedEvent> producerFactory() {
+    ProducerFactory<String, WeatherEvent> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
     @Bean
-    KafkaTemplate<String, WeatherCreatedEvent> kafkaTemplate() {
+    KafkaTemplate<String, WeatherEvent> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 

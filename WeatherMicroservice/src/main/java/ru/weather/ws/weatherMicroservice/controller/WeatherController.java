@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.weather.ws.core.dto.WeatherDto;
 import ru.weather.ws.weatherMicroservice.service.WeatherService;
-import ru.weather.ws.weatherMicroservice.service.dto.CreateWeatherDto;
 
 import java.util.Date;
 
@@ -28,8 +28,8 @@ public class WeatherController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createWeather(@RequestBody CreateWeatherDto createWeatherDto){
-        String weatherID = weatherService.createWeather(createWeatherDto);
+    public ResponseEntity<Object> createWeather(@RequestBody WeatherDto weatherDto){
+        String weatherID = weatherService.createWeather(weatherDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(weatherID);
     }

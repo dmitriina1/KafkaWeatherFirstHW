@@ -5,41 +5,40 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
-import ru.weather.ws.core.WeatherCreatedEvent;
-import ru.weather.ws.weatherMicroservice.service.dto.CreateWeatherDto;
+import ru.weather.ws.core.WeatherEvent;
+import ru.weather.ws.core.dto.WeatherDto;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
 
-    private KafkaTemplate<String, WeatherCreatedEvent> kafkaTemplate;
+    private KafkaTemplate<String, WeatherEvent> kafkaTemplate;
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    public WeatherServiceImpl(KafkaTemplate<String, WeatherCreatedEvent> kafkaTemplate) {
+    public WeatherServiceImpl(KafkaTemplate<String, WeatherEvent> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
-    public String createWeather(CreateWeatherDto createWeatherDto){
+    public String createWeather(WeatherDto weatherDto){
 
         String weatherId = UUID.randomUUID().toString();
 
-        WeatherCreatedEvent weatherCreatedEvent = new WeatherCreatedEvent(weatherId,createWeatherDto.getCity(), createWeatherDto.getTemperature(),
-                createWeatherDto.getState());
+        WeatherEvent weatherEvent = new WeatherEvent(weatherId, weatherDto);
 
 
-//        SendResult<String, WeatherCreatedEvent> result= kafkaTemplate
-//                .send("product-created-events-topic", weatherId, weatherCreatedEvent).get();
+//        SendResult<String, WeatherEvent> result= kafkaTemplate
+//                .send("product-created-events-topic", weatherId, weatherEvent).get();
 ////        LOGGER.info("Message sent successfully {}", result.getRecordMetadata());
 //        LOGGER.info("Topic {}", result.getRecordMetadata().topic());
 //        LOGGER.info("Partition {}", result.getRecordMetadata().partition());
 //        LOGGER.info("Offset {}", result.getRecordMetadata().offset());
         //АСинхронная
-        CompletableFuture<SendResult<String, WeatherCreatedEvent>> future= kafkaTemplate
-                .send("weather-events-topic", weatherId, weatherCreatedEvent);
+        CompletableFuture<SendResult<String, WeatherEvent>> future= kafkaTemplate
+                .send("weather-events-topic", weatherId, weatherEvent);
 
         future.whenComplete((r, e) -> {
             if(e!=null){
