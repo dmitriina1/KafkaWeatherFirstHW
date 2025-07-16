@@ -29,8 +29,9 @@
     ./kafka-storage.bat random-uuid
     
     ```
+    
     Получить комбинацию букв (например, kpUtegHnRBuOQBScPPbBCA)
-
+    
     4. Далее выполнить команду, вставив на место kpUtegHnRBuOQBScPPbBCA свою комбинацию
     ```
     
