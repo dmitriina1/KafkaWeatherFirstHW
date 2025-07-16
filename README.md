@@ -27,7 +27,6 @@
     ```
     
     ./kafka-storage.bat random-uuid
-    
     ```
     
     Получить комбинацию букв (например, kpUtegHnRBuOQBScPPbBCA)
@@ -36,7 +35,6 @@
     ```
     
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-1.properties
-
     ```
     Выполнить такие же команды для server-2 и server-3:
 
@@ -44,7 +42,6 @@
     
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-2.properties
     .\kafka-storage.bat format -t kpUtegHnRBuOQBScPPbBCA -c ../../config/kraft/server-3.properties
-
     ```
 
     5. В разных терминалах из директории запустить команду для каждого сервера (по 1 в каждом терминале):
@@ -53,7 +50,6 @@
     .\kafka-server-start.bat ../../config/kraft/server-1.properties
     .\kafka-server-start.bat ../../config/kraft/server-2.properties
     .\kafka-server-start.bat ../../config/kraft/server-3.properties
-    
     ```
 
     6. Запустить WeatherMicroservice, а затем WeatherConsumer. Также можно отправлять запросы через Postman на локальный сервер:
@@ -61,7 +57,6 @@
      ```
 
     http://localhost:62792/weather
-
        ```
     7. Если есть возможность, можете запустить докер файл.
     
